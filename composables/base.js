@@ -3,7 +3,7 @@ import axios from "axios";
 const { VITE_APP_BASE_URL } = import.meta.env;
 
 const instance  = axios.create({
-    baseURL: `${VITE_APP_BASE_URL}`
+    baseURL: `https://vue3-course-api.hexschool.io/v2`
 });
 
 instance.interceptors.request.use(

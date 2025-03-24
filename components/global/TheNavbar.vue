@@ -3,7 +3,7 @@
         class="mx-auto p-6 bg-black opacity-90 text-white sticky top-0 z-10 font-bold"
     >
         <nav class="flex items-center justify-between">
-            <router-link
+            <NuxtLink
                 to="/"
                 class="cursor-pointer flex items-center duration-300 hover:text-xl"
             >
@@ -12,7 +12,7 @@
                     src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709969615623.png"
                 />
                 <p>Liquor Store</p>
-            </router-link>
+            </NuxtLink>
             <div class="flex items-center justify-center sm:hidden">
                 <svg
                     @click="changeMode"
@@ -26,7 +26,7 @@
                     />
                 </svg>
                 <div class="hover:font-bold">
-                    <router-link class="relative" to="/cart">
+                    <NuxtLink class="relative" to="/cart">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="white"
@@ -42,7 +42,7 @@
                             class="absolute bottom-4 right-[-14px] bg-red-600 px-[4px] rounded-full text-sm"
                             >{{ cartStore.cartNum }}</span
                         >
-                    </router-link>
+                    </NuxtLink>
                 </div>
             </div>
             <ul class="sm:flex items-center justify-between hidden">
@@ -54,7 +54,7 @@
                         'rounded-sm': currentPage === '/about',
                     }"
                 >
-                    <router-link to="/about">品牌故事</router-link>
+                    <NuxtLink to="/about">品牌故事</NuxtLink>
                 </li>
                 <li
                     class="p-1 mr-2 cursor-pointer duration-300 hover:text-xl"
@@ -64,9 +64,9 @@
                         'rounded-sm': currentPage === '/products',
                     }"
                 >
-                    <router-link
+                    <NuxtLink
                         :to="{ path: '/products', query: { type: '全部' } }"
-                        >系列酒藏</router-link
+                        >系列酒藏</NuxtLink
                     >
                 </li>
                 <li
@@ -77,7 +77,7 @@
                         'rounded-sm': currentPage === '/cart',
                     }"
                 >
-                    <router-link class="relative" to="/cart">
+                    <NuxtLink class="relative" to="/cart">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="white"
@@ -93,7 +93,7 @@
                             class="absolute bottom-4 right-[-6px] bg-red-600 px-[4px] rounded-full text-sm"
                             >{{ cartStore.cartNum }}</span
                         >
-                    </router-link>
+                    </NuxtLink>
                 </li>
             </ul>
         </nav>
@@ -103,11 +103,11 @@
         class="flex flex-col items-center justify-between mx-auto p-6 bg-black opacity-90 text-white sticky top-[82px] z-10 font-bold"
     >
         <li class="mb-2 cursor-pointer duration-300 hover:text-xl">
-            <router-link to="/about">品牌故事</router-link>
+            <NuxtLink to="/about">品牌故事</NuxtLink>
         </li>
         <li class="mb-2 cursor-pointer duration-300 hover:text-xl">
-            <router-link :to="{ path: '/products', query: { type: '威士忌' } }"
-                >系列酒藏</router-link
+            <NuxtLink :to="{ path: '/products', query: { type: '威士忌' } }"
+                >系列酒藏</NuxtLink
             >
         </li>
     </ul>

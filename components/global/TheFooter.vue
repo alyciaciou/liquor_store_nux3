@@ -3,10 +3,10 @@
         <div class="flex justify-center h-full mb-4">
             <div class="mr-10 flex flex-col items-center h-[33%]">
                 <p class="mb-4 font-bold border-b-2">關於我們</p>
-                <router-link
+                <NuxtLink
                     class="duration-300 hover:text-lg block"
                     to="/about"
-                    >品牌故事</router-link
+                    >品牌故事</NuxtLink
                 >
             </div>
 
@@ -14,40 +14,40 @@
                 <p class="mb-4 font-bold border-b-2">熱銷系列</p>
                 <ul>
                     <li class="mb-2">
-                        <router-link
+                        <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
                                 path: '/products',
                                 query: { type: '威士忌' },
                             }"
-                            >威士忌</router-link
+                            >威士忌</NuxtLink
                         >
                     </li>
                     <li class="mb-2">
-                        <router-link
+                        <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
                                 path: '/products',
                                 query: { type: '葡萄酒' },
                             }"
-                            >葡萄酒</router-link
+                            >葡萄酒</NuxtLink
                         >
                     </li>
                     <li class="mb-2">
-                        <router-link
+                        <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{ path: '/products', query: { type: '香檳' } }"
-                            >香檳</router-link
+                            >香檳</NuxtLink
                         >
                     </li>
                     <li>
-                        <router-link
+                        <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
                                 path: '/products',
                                 query: { type: '氣泡酒' },
                             }"
-                            >氣泡酒</router-link
+                            >氣泡酒</NuxtLink
                         >
                     </li>
                 </ul>
