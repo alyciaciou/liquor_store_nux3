@@ -1,9 +1,12 @@
 import { GET } from '@/composables/base';
 
 const { BASE_URL } = import.meta.env;
+const appConfig = useAppConfig().baseURL
+const base = appConfig.baseURL
+
 
 const getAllProducts = () => {
-    const res = GET(`/api${BASE_URL}products/all`);
+    const res = GET(`/api${base}products/all`);
     return res;
 };
 
