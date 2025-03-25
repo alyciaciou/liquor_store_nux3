@@ -26,7 +26,7 @@
                     />
                 </svg>
                 <div class="hover:font-bold">
-                    <NuxtLink class="relative" to="/cart">
+                    <NuxtLink class="relative" to="cart">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="white"
@@ -54,7 +54,7 @@
                         'rounded-sm': currentPage === '/about',
                     }"
                 >
-                    <NuxtLink to="/about">品牌故事</NuxtLink>
+                    <NuxtLink to="about">品牌故事</NuxtLink>
                 </li>
                 <li
                     class="p-1 mr-2 cursor-pointer duration-300 hover:text-xl"
@@ -65,7 +65,7 @@
                     }"
                 >
                     <NuxtLink
-                        :to="{ path: '/products', query: { type: '全部' } }"
+                        :to="{ path: 'products', query: { type: '全部' } }"
                         >系列酒藏</NuxtLink
                     >
                 </li>
@@ -77,7 +77,7 @@
                         'rounded-sm': currentPage === '/cart',
                     }"
                 >
-                    <NuxtLink class="relative" to="/cart">
+                    <NuxtLink class="relative" to="cart">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="white"
@@ -103,10 +103,10 @@
         class="flex flex-col items-center justify-between mx-auto p-6 bg-black opacity-90 text-white sticky top-[82px] z-10 font-bold"
     >
         <li class="mb-2 cursor-pointer duration-300 hover:text-xl">
-            <NuxtLink to="/about">品牌故事</NuxtLink>
+            <NuxtLink to="about">品牌故事</NuxtLink>
         </li>
         <li class="mb-2 cursor-pointer duration-300 hover:text-xl">
-            <NuxtLink :to="{ path: '/products', query: { type: '威士忌' } }"
+            <NuxtLink :to="{ path: 'products', query: { type: '威士忌' } }"
                 >系列酒藏</NuxtLink
             >
         </li>
@@ -114,23 +114,23 @@
 </template>
 
 <script setup>
-import { useCartNumStore } from "@/stores/counter";
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+    import { useCartNumStore } from "@/stores/counter";
+    import { ref, onMounted } from "vue";
+    import { useRoute } from "vue-router";
 
-const cartStore = useCartNumStore();
-cartStore.getCartNum();
+    const cartStore = useCartNumStore();
+    cartStore.getCartNum();
 
-const currentPage = ref(null);
+    const currentPage = ref(null);
 
-const route = useRoute();
+    const route = useRoute();
 
-const isSmall = ref(false);
-const changeMode = () => {
-    isSmall.value = !isSmall.value;
-};
+    const isSmall = ref(false);
+    const changeMode = () => {
+        isSmall.value = !isSmall.value;
+    };
 
-onMounted(() => {
-    currentPage.value = route.path;
-});
+    onMounted(() => {
+        currentPage.value = route.path;
+    });
 </script>

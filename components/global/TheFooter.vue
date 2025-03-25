@@ -3,9 +3,7 @@
         <div class="flex justify-center h-full mb-4">
             <div class="mr-10 flex flex-col items-center h-[33%]">
                 <p class="mb-4 font-bold border-b-2">關於我們</p>
-                <NuxtLink
-                    class="duration-300 hover:text-lg block"
-                    to="/about"
+                <NuxtLink class="duration-300 hover:text-lg block" to="about"
                     >品牌故事</NuxtLink
                 >
             </div>
@@ -17,7 +15,7 @@
                         <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
-                                path: '/products',
+                                path: 'products',
                                 query: { type: '威士忌' },
                             }"
                             >威士忌</NuxtLink
@@ -27,7 +25,7 @@
                         <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
-                                path: '/products',
+                                path: 'products',
                                 query: { type: '葡萄酒' },
                             }"
                             >葡萄酒</NuxtLink
@@ -36,7 +34,7 @@
                     <li class="mb-2">
                         <NuxtLink
                             class="duration-300 hover:text-lg block"
-                            :to="{ path: '/products', query: { type: '香檳' } }"
+                            :to="{ path: 'products', query: { type: '香檳' } }"
                             >香檳</NuxtLink
                         >
                     </li>
@@ -44,7 +42,7 @@
                         <NuxtLink
                             class="duration-300 hover:text-lg block"
                             :to="{
-                                path: '/products',
+                                path: 'products',
                                 query: { type: '氣泡酒' },
                             }"
                             >氣泡酒</NuxtLink

@@ -90,10 +90,11 @@
 
     //api
     import { useProductApi } from "@/composables/productApi";
-    import { addTocart } from "@/composables/cartApi";
+    import { useCartApi } from "@/composables/cartApi";
 
     const { getProductInfo } = useProductApi();
     const { successMsg } = useSweetAlert();
+    const { addTocart } = useCartApi();
     const route = useRoute();
     const cartStore = useCartNumStore();
     const isLoading = ref(true);

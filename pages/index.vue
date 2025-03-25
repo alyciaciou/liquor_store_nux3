@@ -73,7 +73,7 @@
                             >
                                 <NuxtLink
                                     :to="{
-                                        path: '/products',
+                                        path: 'products',
                                         query: { type: item.type },
                                     }"
                                     class="duration-500 hover:text-lg bg-zinc-900 rounded-lg hover:opacity-65 cursor-pointer"
@@ -129,7 +129,7 @@
                         >
                             <NuxtLink
                                 :to="{
-                                    path: '/products',
+                                    path: 'products',
                                     query: { type: item.type },
                                 }"
                             >
