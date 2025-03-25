@@ -185,29 +185,10 @@
     import { useOrderApi } from "@/composables/order";
 
     //vee-validate
-    import {
-        Field as VField,
-        Form as VForm,
-        ErrorMessage,
-        defineRule,
-        configure,
-    } from "vee-validate";
-    import * as AllRules from "@vee-validate/rules";
-    import { localize, setLocale } from "@vee-validate/i18n";
-    import zhTW from "@vee-validate/i18n/dist/locale/zh_TW.json";
+    import { Field as VField, Form as VForm, ErrorMessage } from "vee-validate";
 
     const { submitOrder } = useOrderApi();
-
     const { getCartInfo } = useCartApi();
-
-    Object.keys(AllRules).forEach((rule) => {
-        defineRule(rule, AllRules[rule]);
-    });
-    configure({
-        generateMessage: localize({ zh_TW: zhTW }),
-        validateOnInput: true,
-    });
-    setLocale("zh_TW");
 
     const router = useRouter();
     const isLoading = ref(true);
@@ -238,7 +219,9 @@
             const res = await submitOrder(data);
             isLoading.value = false;
             router.push(`/checkout/${res.orderId}`);
-        } catch (error) {}
+        } catch (error) {
+            console.error("submitOrder error:", error);
+        }
     };
 
     onMounted(async () => {
@@ -246,6 +229,8 @@
             const res = await getCartInfo();
             isLoading.value = false;
             info.value = res.data;
-        } catch (error) {}
+        } catch (error) {
+            console.error("getCartInfo error:", error);
+        }
     });
 </script>

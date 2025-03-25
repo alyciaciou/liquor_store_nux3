@@ -1,12 +1,26 @@
+// ✅ 修正後的 useCartApi.js
 import { useApi } from "@/composables/base";
 
 export const useCartApi = () => {
-    const { POST, GET, DELETE, PUT } = useApi();
+    const addTocart = (data) => {
+        const { POST } = useApi();
+        return POST("cart", data);
+    };
 
-    const addTocart = (data) => POST("cart", data);
-    const getCartInfo = () => GET("cart");
-    const updateCartItem = (id, data) => PUT(`cart/${id}`, data);
-    const deleteCartItem = (id) => DELETE(`cart/${id}`);
+    const getCartInfo = () => {
+        const { GET } = useApi();
+        return GET("cart");
+    };
+
+    const updateCartItem = (id, data) => {
+        const { PUT } = useApi();
+        return PUT(`cart/${id}`, data);
+    };
+
+    const deleteCartItem = (id) => {
+        const { DELETE } = useApi();
+        return DELETE(`cart/${id}`);
+    };
 
     return { addTocart, getCartInfo, updateCartItem, deleteCartItem };
 };
