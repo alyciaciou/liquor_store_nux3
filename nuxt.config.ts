@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig:{
     public:{
-      baseUrl:'https://vue3-course-api.hexschool.io/v2'
+      baseUrl:'https://vue3-course-api.hexschool.io/v2',
+      appBase: '/liquor_store/'
     }
   },
   app:{
