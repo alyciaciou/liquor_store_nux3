@@ -141,7 +141,9 @@
   import { ref, onMounted, watch } from 'vue'
   
   //api
-  import { getCartInfo, updateCartItem } from '@/composables/cartApi'
+  import { useCartApi } from '@/composables/cartApi'
+
+  const { getCartInfo, updateCartItem } = useCartApi()
   const { deleteMsg } = useSweetAlert()
   
   const isLoading = ref(true)

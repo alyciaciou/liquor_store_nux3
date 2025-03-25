@@ -1,11 +1,8 @@
-import { POST } from '@/composables/base';
+import { useApi } from "@/composables/base";
 
-const { BASE_URL } = import.meta.env;
+export const usePaymentApi = () => {
+    const { POST } = useApi();
+    const confirmPayment = (orderId) => POST(`pay/${orderId}`);
 
-const confirmPayment = ( orderId ) => {
-    const res = POST(`/api${BASE_URL}pay/${orderId}`);
-    return res;
+    return { confirmPayment };
 };
-
-
-export { confirmPayment }

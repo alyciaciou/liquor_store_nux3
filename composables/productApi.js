@@ -1,23 +1,13 @@
-import { GET } from '@/composables/base';
+import { useApi } from "@/composables/base";
 
-const { BASE_URL } = import.meta.env;
-const appConfig = useAppConfig().baseURL
-const base = appConfig.baseURL
+export const useProductApi = () => {
+    const { GET } = useApi();
 
+    const getAllProducts = () => GET("products/all");
 
-const getAllProducts = () => {
-    const res = GET(`/api${base}products/all`);
-    return res;
+    const getProducts = (queryInfo) => GET("products", queryInfo);
+
+    const getProductInfo = (id) => GET(`product/${id}`);
+
+    return { getProducts, getProductInfo, getAllProducts };
 };
-
-const getProducts = (queryInfo) => {
-    const res = GET(`/api${BASE_URL}products`, queryInfo);
-    return res;
-};
-
-const getProductInfo = ( id ) => {
-    const res = GET(`/api${BASE_URL}product/${id}`);
-    return res;
-};
-
-export { getProducts, getProductInfo, getAllProducts }

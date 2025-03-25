@@ -1,6 +1,8 @@
 import Swal from 'sweetalert2'
 import { useCartNumStore } from '@/stores/counter'
-import { getCartInfo, deleteCartItem } from '@/composables/cartApi'
+import { useCartApi } from '@/composables/cartApi'
+
+const { getCartInfo, deleteCartItem } = useCartApi()
 
 export const useSweetAlert = () => {
   const cartStore = useCartNumStore()

@@ -1,15 +1,11 @@
-import { GET, POST } from '@/composables/base';
+import { useApi } from "@/composables/base";
 
-const { BASE_URL } = import.meta.env;
+export const useOrderApi = () => {
+    const { POST, GET } = useApi();
 
-const submitOrder = ( data ) => {
-    const res = POST(`/api${BASE_URL}order`, data);
-    return res;
+    const submitOrder = (data) => POST("order", data);
+
+    const getOrder = (id) => GET(`order/${id}`);
+
+    return { submitOrder, getOrder };
 };
-
-const getOrder = (id) => {
-    const res = GET(`/api${BASE_URL}order/${id}`);
-    return res;
-};
-
-export { submitOrder, getOrder }
