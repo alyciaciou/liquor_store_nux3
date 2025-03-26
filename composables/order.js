@@ -1,11 +1,15 @@
 import { useApi } from "@/composables/base";
 
 export const useOrderApi = () => {
-    const { POST, GET } = useApi();
+    const submitOrder = (data) => {
+        const { POST } = useApi();
+        return POST("order", data);
+    };
 
-    const submitOrder = (data) => POST("order", data);
-
-    const getOrder = (id) => GET(`order/${id}`);
+    const getOrder = (id) => {
+        const { GET } = useApi();
+        return GET(`order/${id}`);
+    };
 
     return { submitOrder, getOrder };
 };

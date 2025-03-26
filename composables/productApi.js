@@ -1,13 +1,20 @@
 import { useApi } from "@/composables/base";
 
 export const useProductApi = () => {
-    const { GET } = useApi();
+    const getAllProducts = () => {
+        const { GET } = useApi();
+        return GET("products/all");
+    };
 
-    const getAllProducts = () => GET("products/all");
+    const getProducts = (queryInfo) => {
+        const { GET } = useApi();
+        return GET("products", queryInfo);
+    };
 
-    const getProducts = (queryInfo) => GET("products", queryInfo);
-
-    const getProductInfo = (id) => GET(`product/${id}`);
+    const getProductInfo = (id) => {
+        const { GET } = useApi();
+        return GET(`product/${id}`);
+    };
 
     return { getProducts, getProductInfo, getAllProducts };
 };
