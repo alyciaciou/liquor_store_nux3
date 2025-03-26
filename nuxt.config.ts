@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         },
     },
     app: {
-        baseURL: "/liquor_store/",
+        baseURL: "/liquor_store_nux3/",
     },
     modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
     components: {
