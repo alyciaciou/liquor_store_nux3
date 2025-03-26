@@ -23,7 +23,7 @@
                         <p class="pl-20">享受人生</p>
                     </h1>
                     <NuxtLink
-                        :to="{ path: 'products', query: { type: '全部' } }"
+                        :to="{ path: '/products', query: { type: '全部' } }"
                         class="text-3xl border-2 p-1 rounded duration-500 hover:bg-slate-100 hover:text-black cursor-pointer"
                     >
                         立即前往商品頁
@@ -73,7 +73,7 @@
                             >
                                 <NuxtLink
                                     :to="{
-                                        path: 'products',
+                                        path: '/products',
                                         query: { type: item.type },
                                     }"
                                     class="duration-500 hover:text-lg bg-zinc-900 rounded-lg hover:opacity-65 cursor-pointer"
@@ -129,7 +129,7 @@
                         >
                             <NuxtLink
                                 :to="{
-                                    path: 'products',
+                                    path: '/products',
                                     query: { type: item.type },
                                 }"
                             >

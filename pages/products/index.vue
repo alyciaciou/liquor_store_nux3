@@ -66,7 +66,7 @@
                 >
                     <NuxtLink
                         :to="{
-                            path: `product/${item.id}`,
+                            path: `/products/${item.id}`,
                             query: { type: item.category },
                         }"
                     >
@@ -88,7 +88,7 @@
                             <div class="flex items-center justify-between">
                                 <NuxtLink
                                     :to="{
-                                        path: `products/${item.id}`,
+                                        path: `/products/${item.id}`,
                                         query: { type: item.category },
                                     }"
                                     class="block border-2 p-2 rounded-lg cursor-pointer duration-500 hover:bg-white hover:text-black mr-2"

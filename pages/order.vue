@@ -155,7 +155,7 @@
                             class="text-center flex flex-col md:flex-row items-center justify-between"
                         >
                             <NuxtLink
-                                to="cart"
+                                to="/cart"
                                 class="border-2 p-2 rounded-lg duration-500 hover:bg-white hover:text-black w-full md:w-[35%] mb-4"
                             >
                                 上一步

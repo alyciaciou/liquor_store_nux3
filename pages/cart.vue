@@ -120,13 +120,13 @@
                 class="py-8 text-center flex flex-col md:flex-row items-center justify-between"
             >
                 <NuxtLink
-                    :to="{ path: 'products', query: { type: '威士忌' } }"
+                    :to="{ path: '/products', query: { type: '威士忌' } }"
                     class="border-2 p-2 rounded-lg duration-500 hover:bg-white hover:text-black w-full md:w-[35%] lg:w-[20%] mb-4"
                 >
                     繼續購物
                 </NuxtLink>
                 <NuxtLink
-                    to="order"
+                    to="/order"
                     class="border-2 p-2 rounded-lg duration-500 hover:bg-white hover:text-black w-full md:w-[35%] lg:w-[20%] mb-4"
                 >
                     下一步
@@ -139,7 +139,7 @@
             >
                 <p class="p-2 text-3xl mb-8">尚未加入商品</p>
                 <NuxtLink
-                    :to="{ path: 'products', query: { type: '全部' } }"
+                    :to="{ path: '/products', query: { type: '全部' } }"
                     class="inline-block border-2 p-2 rounded-lg duration-500 hover:bg-white hover:text-black w-[60%] md:w-[25%] mb-4"
                 >
                     前往購物
