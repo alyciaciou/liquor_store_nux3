@@ -1,0 +1,6 @@
+services:
+    - type: web
+      name: liquor-store-frontend
+      env: static
+      buildCommand: npm run build
+      staticPublishPath: .output/public
