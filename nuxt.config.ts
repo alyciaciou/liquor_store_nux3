@@ -10,7 +10,8 @@ export default defineNuxtConfig({
         },
     },
     app: {
-        baseURL: "/",
+        baseURL:
+            process.env.DEPLOY_ENV === "github" ? "/liquor_store_nux3/" : "/",
     },
     modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
     components: {
