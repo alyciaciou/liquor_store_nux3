@@ -53,8 +53,6 @@ npm install
 
 ## 啟動本地開發伺服器
 
-Start the development server on `http://localhost:3000`:
-
 ```bash
 npm run dev
 # 開啟瀏覽器 http://localhost:3000
