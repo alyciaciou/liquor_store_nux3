@@ -1,75 +1,79 @@
-# Nuxt Minimal Starter
+# 🥂 Liquor Store - Nuxt 3
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+品味生活，享受人生。  
+以 **Nuxt 3** 打造的響應式酒類電商前端網站，整合多項現代化工具與 API 互動，支援 **靜態網站生成（SSG）**，可輕鬆部署至 **GitHub Pages** 或 **Render**。
 
-## Setup
+---
 
-Make sure to install dependencies:
+## 🔗 Demo 網站
+
+- GitHub Pages：🔗 https://alyciaciou.github.io/liquor_store_nux3/
+- Render：🔗 https://liquor-store-nux3.onrender.com/
+
+---
+
+## ✨ 功能介紹
+
+* 商品列表分類（支援條件篩選）
+* 加入購物車（支援數量調整與刪除）
+* 表單驗證與訂單送出（使用 VeeValidate）
+* Swiper 套件製作輪播區塊
+* Pinia 管理購物車資料與商品狀態
+* 串接 API：取得商品清單與送出訂單資訊
+
+---
+
+## 🖼️ 頁面截圖
+
+### 首頁範例
+![首頁畫面](https://github.com/alyciaciou/liquor_store_nux3/blob/main/public/images/alyciaciou.github.io_liquor_store_homepage.png?raw=true)
+
+---
+
+## 🧩 技術架構與工具
+
+* Nuxt 3：基於 Vue 3，支援自動路由與靜態產生（SSG）
+* Tailwind CSS：快速打造一致的響應式 UI 設計
+* Pinia：狀態管理工具，集中管理購物車與商品資料
+* VeeValidate：表單驗證
+* Axios：串接第三方 API 實現即時資料互動
+* Vue Router：由 Nuxt 內建路由功能，自動建立 pages 對應路徑
+* SweetAlert2：美觀的彈跳視窗
+* Swiper：製作首頁圖片輪播
+---
+
+## ⚙️ 安裝與開發
+
+### 安裝套件
 
 ```bash
-# npm
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## 啟動本地開發伺服器
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
+# 開啟瀏覽器 http://localhost:3000
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+## 部署與靜態產出（SSG）
 
 ```bash
-# npm
-npm run build
+npm run generate
+# 用於部署到 Render
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run generate:gh
+# 用於部署到 GitHub Pages（base URL 不同）
 ```
 
-Locally preview production build:
+## 注意事項
 
-```bash
-# npm
-npm run preview
+* 本作品純屬個人前端練習用，所使用圖片與資料皆無任何商業用途
+* 所有 API 為第三方提供，僅用於學習與介面展示
 
-# pnpm
-pnpm preview
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
