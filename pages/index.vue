@@ -1,22 +1,16 @@
 <template>
     <div class="bg-[#070707f0] text-white">
-        <div
-            v-if="isLoading"
-            class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
-        >
+        <div v-if="isLoading" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
             <img class="h-16 w-16" src="/Rolling-1s-150px.gif" alt="loading" />
         </div>
         <TheNavbar />
         <header>
-            <div
-                class="relative flex flex-col items-center justify-center text-center opacity-85"
-            >
+            <div class="relative flex flex-col items-center justify-center text-center opacity-85">
                 <img
                     @load="handleImg"
                     ref="mainImage"
-                    class="h-[calc(100vh-88px)] w-full object-cover object-center woww"
-                    src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709103904637.jpg"
-                />
+                    class="h-[calc(100vh-88px)] w-full object-cover object-center"
+                    src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709103904637.jpg" />
                 <div class="absolute">
                     <h1 class="text-6xl font-bold mb-4 leading-relaxed">
                         <p class="pr-20">品味生活</p>
@@ -24,8 +18,7 @@
                     </h1>
                     <NuxtLink
                         :to="{ path: '/products', query: { type: '全部' } }"
-                        class="text-3xl border-2 p-1 rounded duration-500 hover:bg-slate-100 hover:text-black cursor-pointer"
-                    >
+                        class="text-3xl border-2 p-1 rounded duration-500 hover:bg-slate-100 hover:text-black cursor-pointer">
                         立即前往商品頁
                     </NuxtLink>
                 </div>
@@ -55,34 +48,23 @@
                             :style="{
                                 '--swiper-navigation-color': '#fff',
                                 '--swiper-pagination-color': '#fff',
-                                '--swiper-pagination-bullet-inactive-color':
-                                    '#fff',
-                                '--swiper-pagination-bullet-inactive-opacity':
-                                    '0.5',
+                                '--swiper-pagination-bullet-inactive-color': '#fff',
+                                '--swiper-pagination-bullet-inactive-opacity': '0.5',
                                 '--swiper-navigation-size': '50px',
                             }"
                             :pagination="{ clickable: true }"
                             :autoplay="{
                                 delay: 5000,
                                 disableOnInteraction: false,
-                            }"
-                        >
-                            <swiper-slide
-                                v-for="item in liquorList"
-                                :key="item.type"
-                            >
+                            }">
+                            <swiper-slide v-for="item in liquorList" :key="item.type">
                                 <NuxtLink
                                     :to="{
                                         path: '/products',
                                         query: { type: item.type },
                                     }"
-                                    class="duration-500 hover:text-lg bg-zinc-900 rounded-lg hover:opacity-65 cursor-pointer"
-                                >
-                                    <img
-                                        class="object-cover rounded-t-lg"
-                                        :src="item.url"
-                                        :alt="item.type"
-                                    />
+                                    class="duration-500 hover:text-lg bg-zinc-900 rounded-lg hover:opacity-65 cursor-pointer">
+                                    <img class="object-cover rounded-t-lg" :src="item.url" :alt="item.type" />
                                     <p class="p-2 bg-[#535252f2] rounded-b-lg">
                                         {{ item.type }}
                                     </p>
@@ -106,12 +88,8 @@
                         <li>
                             品嘗口感：將酒慢慢品嘗，感受它在口中的質地和結構。注意酒的酸度、甜度、單寧等要素，這些將影響您的感官體驗。
                         </li>
-                        <li>
-                            餘韻：品嘗完後，感受酒的餘韻，它能告訴您酒的品質和層次感。
-                        </li>
-                        <li>
-                            配對美食：最後，試著將酒與不同的美食搭配，發現它們的化學反應和互相提升的風味。
-                        </li>
+                        <li>餘韻：品嘗完後，感受酒的餘韻，它能告訴您酒的品質和層次感。</li>
+                        <li>配對美食：最後，試著將酒與不同的美食搭配，發現它們的化學反應和互相提升的風味。</li>
                     </ul>
                 </div>
             </section>
@@ -119,25 +97,17 @@
             <section class="py-12">
                 <div class="text-center">
                     <h3 class="text-4xl mb-10 font-bold">熱銷系列</h3>
-                    <ul
-                        class="flex flex-row items-center justify-between flex-wrap"
-                    >
+                    <ul class="flex flex-row items-center justify-between flex-wrap">
                         <li
                             v-for="item in liquorList.slice(0, 4)"
                             :key="item.type"
-                            class="hover:opacity-65 duration-500 hover:text-lg cursor-pointer md:w-[24%] w-[46%] mb-6"
-                        >
+                            class="hover:opacity-65 duration-500 hover:text-lg cursor-pointer md:w-[24%] w-[46%] mb-6">
                             <NuxtLink
                                 :to="{
                                     path: '/products',
                                     query: { type: item.type },
-                                }"
-                            >
-                                <img
-                                    class="object-cover rounded-t-lg w-full"
-                                    :src="item.url"
-                                    :alt="item.type"
-                                />
+                                }">
+                                <img class="object-cover rounded-t-lg w-full" :src="item.url" :alt="item.type" />
                                 <p class="p-2 bg-[#535252f2] rounded-b-lg">
                                     {{ item.type }}
                                 </p>
@@ -151,16 +121,11 @@
                 <div class="text-center">
                     <h3 class="text-4xl mb-10 font-bold">釀造過程</h3>
                     <ul>
-                        <li
-                            class="flex-col items-center justify-center md:flex md:flex-row md:justify-between mb-12"
-                        >
+                        <li class="flex-col items-center justify-center md:flex md:flex-row md:justify-between mb-12">
                             <img
                                 class="h-[400px] w-full md:w-[48%] object-cover rounded-lg inline-block"
-                                src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968032516.jpg"
-                            />
-                            <div
-                                class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0"
-                            >
+                                src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968032516.jpg" />
+                            <div class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0">
                                 <h4 class="mb-2 text-xl">葡萄酒陳釀</h4>
                                 <ul class="list-disc list-inside">
                                     <li>
@@ -172,22 +137,16 @@
                                     <li>
                                         氣泡酒：通常是在發酵過程中添加二氧化碳，或者將已經發酵的酒再次進行二次發酵，使氣泡形成。
                                     </li>
-                                    <li>
-                                        甜酒：通常是在發酵過程中停止發酵，使酒中保留一部分的糖分，使其具有甜味。
-                                    </li>
+                                    <li>甜酒：通常是在發酵過程中停止發酵，使酒中保留一部分的糖分，使其具有甜味。</li>
                                 </ul>
                             </div>
                         </li>
                         <li
-                            class="flex-col items-center justify-center md:flex md:flex-row-reverse md:justify-between mb-12"
-                        >
+                            class="flex-col items-center justify-center md:flex md:flex-row-reverse md:justify-between mb-12">
                             <img
                                 class="h-[400px] w-full md:w-[48%] object-cover rounded-lg inline-block"
-                                src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709967953555.jpg"
-                            />
-                            <div
-                                class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0"
-                            >
+                                src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709967953555.jpg" />
+                            <div class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0">
                                 <h4 class="mb-2 text-xl">木桶陳釀</h4>
                                 <ul class="list-disc list-inside">
                                     <li>
@@ -202,17 +161,12 @@
                                 </ul>
                             </div>
                         </li>
-                        <li
-                            class="flex-col items-center justify-center md:flex md:flex-row md:justify-between mb-12"
-                        >
+                        <li class="flex-col items-center justify-center md:flex md:flex-row md:justify-between mb-12">
                             <img
                                 class="h-[400px] w-[80%] md:w-[48%] object-cover rounded-lg inline-block"
                                 src="https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709967996730.jpg"
-                                alt=""
-                            />
-                            <div
-                                class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0"
-                            >
+                                alt="" />
+                            <div class="md:w-[48%] w-full inline-block leading-relaxed mt-4 md:mt-0">
                                 <h4 class="mb-2 text-xl">不同酒款陳釀</h4>
                                 <ul class="list-disc list-inside">
                                     <li>
@@ -224,9 +178,7 @@
                                     <li>
                                         利口酒：利口酒的陳釀可以增加甜味和香氣，通常使用橡木桶或其他香料桶進行陳釀。
                                     </li>
-                                    <li>
-                                        梅酒：梅酒的陳釀可以增添梅子的香氣和風味，通常使用橡木桶或陶罐進行陳釀。
-                                    </li>
+                                    <li>梅酒：梅酒的陳釀可以增添梅子的香氣和風味，通常使用橡木桶或陶罐進行陳釀。</li>
                                     <li>
                                         氣泡酒和香檳：氣泡酒和香檳的陳釀會在瓶內進行，使酒液與酵母和酒渣接觸，獲得更多的複雜性和風味。
                                     </li>
@@ -244,42 +196,39 @@
 
 <script setup>
     //Swiper
-    import { Swiper, SwiperSlide } from "swiper/vue";
-    import "swiper/css";
-    import "swiper/css/navigation";
-    import "swiper/css/pagination";
-    import { Navigation, Autoplay, Pagination } from "swiper/modules";
+    import { Swiper, SwiperSlide } from 'swiper/vue';
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+    import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 
     //components
-
-    import { ref, onMounted } from "vue";
-
     const navigation = [Navigation, Autoplay, Pagination];
 
     const liquorList = [
         {
-            type: "威士忌",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968612209.jpg",
+            type: '威士忌',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968612209.jpg',
         },
         {
-            type: "葡萄酒",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968834316.jpg",
+            type: '葡萄酒',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968834316.jpg',
         },
         {
-            type: "香檳",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968637727.jpg",
+            type: '香檳',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968637727.jpg',
         },
         {
-            type: "氣泡酒",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968661689.jpg",
+            type: '氣泡酒',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968661689.jpg',
         },
         {
-            type: "利口",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968585530.jpg",
+            type: '利口',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968585530.jpg',
         },
         {
-            type: "白蘭地",
-            url: "https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968551710.jpg",
+            type: '白蘭地',
+            url: 'https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709968551710.jpg',
         },
     ];
 
