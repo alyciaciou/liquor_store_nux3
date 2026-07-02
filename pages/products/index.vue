@@ -123,7 +123,7 @@
 
 <script setup lang="ts">
     //api
-    import { useProductApi } from '@/composables/productApi';
+    import { useProductApi, type Product, type ProductsQuery } from '@/composables/productApi';
     import { useCartApi } from '@/composables/cartApi';
 
     import { useCartNumStore } from '@/stores/counter';
@@ -131,27 +131,6 @@
     import { useSweetAlert } from '@/composables/useSweetAlert';
 
     import type { Ref } from 'vue';
-
-    interface Product {
-        brand: string;
-        category: string;
-        content: string;
-        description: string;
-        id: string;
-        imageUrl: string;
-        is_enabled: number;
-        num: number;
-        origin_price: number;
-        price: number;
-        title: string;
-        type: string;
-        unit: string;
-    }
-
-    interface QueryInfo {
-        page: number;
-        category: string;
-    }
 
     type PageAction = 'firstPage' | 'previousPage' | 'currentPage' | 'nextPage' | 'lastPage';
 
@@ -205,7 +184,7 @@
     const type = ['全部', '威士忌', '葡萄酒', '香檳', '氣泡酒', '利口', '白蘭地'] as const;
     const selectedType = ref('全部');
     const page = ref(1);
-    const queryInfo = ref<QueryInfo>({
+    const queryInfo = ref<ProductsQuery>({
         page: page.value,
         category: selectedType.value,
     });

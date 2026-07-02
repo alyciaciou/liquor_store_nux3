@@ -154,8 +154,8 @@
 
 <script setup lang="ts">
     //api
-    import { useCartApi } from '@/composables/cartApi';
-    import { useOrderApi } from '@/composables/order';
+    import { useCartApi, type CartInfo } from '@/composables/cartApi';
+    import { useOrderApi, type OrderUser, type SubmitOrderPayload } from '@/composables/order';
 
     //vee-validate
     import { Field as VField, Form as VForm, ErrorMessage } from 'vee-validate';
@@ -163,42 +163,11 @@
     const { submitOrder } = useOrderApi();
     const { getCartInfo } = useCartApi();
 
-    interface CartProduct {
-        brand: string;
-        category: string;
-        content: string;
-        description: string;
-        id: string;
-        imageUrl: string;
-        is_enabled: number;
-        num: number;
-        origin_price: number;
-        price: number;
-        title: string;
-        type: string;
-        unit: string;
-    }
-
-    interface CartItem {
-        final_total: number;
-        id: string;
-        product_id: string;
-        qty: number;
-        total: number;
-        product: CartProduct;
-    }
-
-    interface CartInfo {
-        carts: CartItem[];
-        final_total: number;
-        total: number;
-    }
-
     const router = useRouter();
     const isLoading = ref(true);
     const info = ref<CartInfo | null>(null);
 
-    const orderInfo = ref({
+    const orderInfo = ref<OrderUser & { message: string }>({
         email: '',
         name: '',
         tel: '',
@@ -207,7 +176,7 @@
     });
 
     const confirmOrden = async () => {
-        const data = {
+        const data: SubmitOrderPayload = {
             data: {
                 user: {
                     name: orderInfo.value.name,

@@ -77,28 +77,12 @@
     import { useSweetAlert } from '@/composables/useSweetAlert';
 
     //api
-    import { useProductApi } from '@/composables/productApi';
+    import { useProductApi, type Product } from '@/composables/productApi';
     import { useCartApi } from '@/composables/cartApi';
 
     const { getProductInfo } = useProductApi();
     const { successMsg } = useSweetAlert();
     const { addTocart } = useCartApi();
-
-    interface Product {
-        brand: string;
-        category: string;
-        content: string;
-        description: string;
-        id: string;
-        imageUrl: string;
-        is_enabled: number;
-        num: number;
-        origin_price: number;
-        price: number;
-        title: string;
-        type: string;
-        unit: string;
-    }
 
     const route = useRoute();
     const cartStore = useCartNumStore();
@@ -132,7 +116,7 @@
     const addProduct = async () => {
         const payload = {
             data: {
-                product_id: route.params.id,
+                product_id: String(route.params.id),
                 qty: currentNum.value,
             },
         };
@@ -147,7 +131,7 @@
 
     onMounted(async () => {
         try {
-            const res = await getProductInfo(route.params.id);
+            const res = await getProductInfo(String(route.params.id));
             isLoading.value = false;
             info.value = res.product;
             content.value = res.product.content.split(';');

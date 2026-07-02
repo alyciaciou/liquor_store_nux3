@@ -132,41 +132,10 @@
     import { useSweetAlert } from '@/composables/useSweetAlert';
 
     //api
-    import { useCartApi } from '@/composables/cartApi';
+    import { useCartApi, type CartInfo, type CartItem } from '@/composables/cartApi';
 
     const { getCartInfo, updateCartItem } = useCartApi();
     const { deleteMsg } = useSweetAlert();
-
-    interface CartProduct {
-        brand: string;
-        category: string;
-        content: string;
-        description: string;
-        id: string;
-        imageUrl: string;
-        is_enabled: number;
-        num: number;
-        origin_price: number;
-        price: number;
-        title: string;
-        type: string;
-        unit: string;
-    }
-
-    interface CartItem {
-        final_total: number;
-        id: string;
-        product_id: string;
-        qty: number;
-        total: number;
-        product: CartProduct;
-    }
-
-    interface CartInfo {
-        carts: CartItem[];
-        final_total: number;
-        total: number;
-    }
 
     const isLoading = ref(true);
     const isChangeNum = ref(false);
