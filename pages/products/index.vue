@@ -1,10 +1,7 @@
 <template>
     <div class="bg-[#070707f0] text-white">
         <TheNavbar />
-        <div
-            v-if="isLoading"
-            class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
-        >
+        <div v-if="isLoading" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
             <img class="h-16 w-16" src="/Rolling-1s-150px.gif" alt="loading" />
         </div>
         <header>
@@ -12,28 +9,17 @@
                 class="h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-center opacity-85"
                 style="
                     background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/liquor_store/1709969444587.jpg);
-                "
-            >
+                ">
                 <div class="">
                     <h2 class="text-6xl font-bold mb-4">系列酒藏</h2>
                 </div>
             </div>
         </header>
         <main class="container mx-auto p-6 md:p-24 mb-6">
-            <ul
-                class="py-8 text-center flex items-center justify-center w-full"
-            >
+            <ul class="py-8 text-center flex items-center justify-center w-full">
                 <li class="w-[40%]">
-                    <select
-                        @change="changeType"
-                        class="bg-[#535252f2] w-[80%] md:w-[50%] p-2 rounded-lg"
-                    >
-                        <option
-                            :selected="selectedType === item"
-                            v-for="item in type"
-                            :key="item"
-                            :value="item"
-                        >
+                    <select @change="changeType" class="bg-[#535252f2] w-[80%] md:w-[50%] p-2 rounded-lg">
+                        <option :selected="selectedType === item" v-for="item in type" :key="item" :value="item">
                             {{ item }}
                         </option>
                     </select>
@@ -42,69 +28,42 @@
                     <select
                         v-model="brand"
                         @change="changeBrand"
-                        class="bg-[#535252f2] w-[80%] md:w-[50%] p-2 rounded-lg"
-                    >
+                        class="bg-[#535252f2] w-[80%] md:w-[50%] p-2 rounded-lg">
                         <option selected value="全部">全部</option>
-                        <option
-                            v-for="item in selectType[selectedType]"
-                            :key="item"
-                            :value="item"
-                        >
+                        <option v-for="item in selectType[selectedType]" :key="item" :value="item">
                             {{ item }}
                         </option>
                     </select>
                 </li>
             </ul>
 
-            <div
-                class="py-8 text-center w-full flex items-center justify-start flex-col md:flex md:flex-row flex-wrap"
-            >
-                <div
-                    v-for="item in productsList"
-                    :key="item.id"
-                    class="md:w-[28%] lg:w-[24%] w-[80%] mb-6 mr-2"
-                >
-                    <NuxtLink
-                        :to="{
-                            path: `/products/${item.id}`,
-                            query: { type: item.category },
-                        }"
-                    >
-                        <div
-                            class="flex flex-col items-center justify-between p-2 bg-[#272626e8] rounded-lg duration-500 hover:bg-[#535252ab] hover:opacity-75 h-[400px]"
-                        >
-                            <img
-                                class="object-cover rounded-lg h-[200px] w-[150px]"
-                                :src="item.imageUrl"
-                                :alt="item.title"
-                            />
-                            <div>
-                                <p class="p-1">{{ item.title }}</p>
-                                <p class="p-1">售價：NT${{ item.price }}</p>
-                                <del class="text-sm ml-2"
-                                    >原價：NT${{ item.origin_price }}</del
-                                >
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <NuxtLink
-                                    :to="{
-                                        path: `/products/${item.id}`,
-                                        query: { type: item.category },
-                                    }"
-                                    class="block border-2 p-2 rounded-lg cursor-pointer duration-500 hover:bg-white hover:text-black mr-2"
-                                >
-                                    瞭解更多
-                                </NuxtLink>
-                                <button
-                                    @click.prevent="addProduct(item.id)"
-                                    type="button"
-                                    class="border-2 p-2 rounded-lg cursor-pointer duration-500 hover:bg-white hover:text-black"
-                                >
-                                    加入購物車
-                                </button>
-                            </div>
+            <div class="py-8 text-center w-full flex items-center justify-start flex-col md:flex md:flex-row flex-wrap">
+                <div v-for="item in productsList" :key="item.id" class="md:w-[28%] lg:w-[24%] w-[80%] mb-6 mr-2">
+                    <div
+                        class="flex h-[400px] cursor-pointer flex-col items-center justify-between rounded-lg bg-[#272626e8] p-2 duration-500 hover:bg-[#535252ab] hover:opacity-75"
+                        @click="goToProduct(item)">
+                        <img
+                            class="h-[200px] w-[150px] rounded-lg object-cover"
+                            :src="item.imageUrl"
+                            :alt="item.title" />
+                        <div>
+                            <p class="p-1">{{ item.title }}</p>
+                            <p class="p-1">售價：NT${{ item.price }}</p>
+                            <del class="ml-2 text-sm">原價：NT${{ item.origin_price }}</del>
                         </div>
-                    </NuxtLink>
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="mr-2 block cursor-pointer rounded-lg border-2 p-2 duration-500 hover:bg-white hover:text-black">
+                                瞭解更多
+                            </span>
+                            <button
+                                @click.stop="addProduct(item.id)"
+                                type="button"
+                                class="cursor-pointer rounded-lg border-2 p-2 duration-500 hover:bg-white hover:text-black">
+                                加入購物車
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -114,8 +73,7 @@
                         <button
                             @click="changePage('firstPage')"
                             class="py-2 px-4 border-2 duration-500 hover:bg-white hover:text-black"
-                            type="button"
-                        >
+                            type="button">
                             <<
                         </button>
                     </li>
@@ -123,15 +81,11 @@
                         <button
                             @click="changePage('previousPage')"
                             class="py-2 px-4 border-2 duration-500 hover:bg-white hover:text-black"
-                            type="button"
-                        >
+                            type="button">
                             <
                         </button>
                     </li>
-                    <li
-                        v-for="(page, index) in totalPages"
-                        :key="index + 'page'"
-                    >
+                    <li v-for="(page, index) in totalPages" :key="index + 'page'">
                         <button
                             @click="changePage('currentPage', page)"
                             class="py-2 px-4 border-2 duration-500 hover:bg-white hover:text-black"
@@ -139,8 +93,7 @@
                             :class="{
                                 'bg-stone-300': clickedPage === page,
                                 'text-black': clickedPage === page,
-                            }"
-                        >
+                            }">
                             {{ page }}
                         </button>
                     </li>
@@ -148,8 +101,7 @@
                         <button
                             @click="changePage('nextPage')"
                             class="py-2 px-4 border-2 duration-500 hover:bg-white hover:text-black"
-                            type="button"
-                        >
+                            type="button">
                             >
                         </button>
                     </li>
@@ -157,8 +109,7 @@
                         <button
                             @click="changePage('lastPage')"
                             class="py-2 px-4 border-2 duration-500 hover:bg-white hover:text-black"
-                            type="button"
-                        >
+                            type="button">
                             >>
                         </button>
                     </li>
@@ -170,16 +121,39 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     //api
-    import { useProductApi } from "@/composables/productApi";
-    import { useCartApi } from "@/composables/cartApi";
+    import { useProductApi } from '@/composables/productApi';
+    import { useCartApi } from '@/composables/cartApi';
 
-    import { onMounted, ref, watch } from "vue";
-    import { useRoute, useRouter } from "vue-router";
-    import { useCartNumStore } from "@/stores/counter";
-    import { useAllProductsStore } from "@/stores/getProducts";
-    import { useSweetAlert } from "@/composables/useSweetAlert";
+    import { useCartNumStore } from '@/stores/counter';
+    import { useAllProductsStore } from '@/stores/getProducts';
+    import { useSweetAlert } from '@/composables/useSweetAlert';
+
+    import type { Ref } from 'vue';
+
+    interface Product {
+        brand: string;
+        category: string;
+        content: string;
+        description: string;
+        id: string;
+        imageUrl: string;
+        is_enabled: number;
+        num: number;
+        origin_price: number;
+        price: number;
+        title: string;
+        type: string;
+        unit: string;
+    }
+
+    interface QueryInfo {
+        page: number;
+        category: string;
+    }
+
+    type PageAction = 'firstPage' | 'previousPage' | 'currentPage' | 'nextPage' | 'lastPage';
 
     const { getProducts } = useProductApi();
     const { addTocart } = useCartApi();
@@ -189,73 +163,70 @@
     const productsStore = useAllProductsStore();
     const { successMsg } = useSweetAlert();
 
+    const PAGE_SIZE = 12;
+
     const isLoading = ref(true);
-    const products = ref(null);
-    const productsList = ref(null);
-    const selectType = {
-        威士忌: ["麥卡倫", "蘇格登", "亞伯樂", "布萊迪"],
-        葡萄酒: ["漢彌根", "樂花園", "富飛"],
-        香檳: ["酩悅", "路易侯德爾", "凱歌", "保羅傑", "杜瓦樂華"],
-        氣泡酒: ["羅卡酒莊", "TOSO", "米娜多"],
-        利口: ["安丘瑞耶斯", "吉拿", "芙內", "義大利庫司", "貝禮詩", "MB"],
-        白蘭地: ["皮耶費朗", "軒尼詩"],
+    const products = ref<Product[] | null>(null);
+    const productsList = ref<Product[]>([]);
+    const selectType: Record<string, string[]> = {
+        威士忌: ['麥卡倫', '蘇格登', '亞伯樂', '布萊迪'],
+        葡萄酒: ['漢彌根', '樂花園', '富飛'],
+        香檳: ['酩悅', '路易侯德爾', '凱歌', '保羅傑', '杜瓦樂華'],
+        氣泡酒: ['羅卡酒莊', 'TOSO', '米娜多'],
+        利口: ['安丘瑞耶斯', '吉拿', '芙內', '義大利庫司', '貝禮詩', 'MB'],
+        白蘭地: ['皮耶費朗', '軒尼詩'],
         全部: [
-            "麥卡倫",
-            "蘇格登",
-            "亞伯樂",
-            "布萊迪",
-            "漢彌根",
-            "樂花園",
-            "富飛",
-            "酩悅",
-            "路易侯德爾",
-            "凱歌",
-            "保羅傑",
-            "杜瓦樂華",
-            "羅卡酒莊",
-            "TOSO",
-            "米娜多",
-            "安丘瑞耶斯",
-            "吉拿",
-            "芙內",
-            "義大利庫司",
-            "貝禮詩",
-            "MB",
-            "皮耶費朗",
-            "軒尼詩",
+            '麥卡倫',
+            '蘇格登',
+            '亞伯樂',
+            '布萊迪',
+            '漢彌根',
+            '樂花園',
+            '富飛',
+            '酩悅',
+            '路易侯德爾',
+            '凱歌',
+            '保羅傑',
+            '杜瓦樂華',
+            '羅卡酒莊',
+            'TOSO',
+            '米娜多',
+            '安丘瑞耶斯',
+            '吉拿',
+            '芙內',
+            '義大利庫司',
+            '貝禮詩',
+            'MB',
+            '皮耶費朗',
+            '軒尼詩',
         ],
     };
 
-    const type = [
-        "全部",
-        "威士忌",
-        "葡萄酒",
-        "香檳",
-        "氣泡酒",
-        "利口",
-        "白蘭地",
-    ];
-    const selectedType = ref("");
+    const type = ['全部', '威士忌', '葡萄酒', '香檳', '氣泡酒', '利口', '白蘭地'] as const;
+    const selectedType = ref('全部');
     const page = ref(1);
-    const queryInfo = ref({
+    const queryInfo = ref<QueryInfo>({
         page: page.value,
         category: selectedType.value,
     });
-    const changeType = (e) => {
-        selectedType.value = e.target.value;
+    const changeType = (e: Event) => {
+        const target = e.target as HTMLSelectElement;
+        selectedType.value = target.value;
         router.replace({
-            path: "/products",
-            query: { type: `${e.target.value}` },
+            path: '/products',
+            query: { type: `${target.value}` },
         });
     };
 
-    const brand = ref("全部");
+    const brand = ref('全部');
     const clickedPage = ref(1);
-    const totalPages = ref(null);
-    const changeBrand = async (e) => {
-        brand.value = e.target.value;
-        if (e.target.value === "全部") {
-            if (selectedType.value !== "全部") {
+    const totalPages = ref(0);
+    const changeBrand = async (e: Event) => {
+        const target = e.target as HTMLSelectElement;
+        brand.value = target.value;
+        const allProducts: Product[] = productsStore.allProducts ?? [];
+        if (target.value === '全部') {
+            if (selectedType.value !== '全部') {
                 if (page.value === 1) {
                     await queryProducts();
                 } else {
@@ -263,18 +234,14 @@
                 }
             } else {
                 page.value = 1;
-                products.value = productsStore.allProducts;
+                products.value = allProducts;
                 productsList.value = getPageData(page);
-                totalPages.value = Math.ceil(
-                    productsStore.allProducts.length / 10
-                );
+                totalPages.value = Math.ceil(allProducts.length / PAGE_SIZE);
             }
         } else {
-            const data = productsStore.allProducts.filter((item) => {
-                return item.brand === e.target.value;
-            });
+            const data = allProducts.filter((item) => item.brand === target.value);
             productsList.value = data;
-            totalPages.value = Math.ceil(data.length / 10);
+            totalPages.value = Math.ceil(data.length / PAGE_SIZE);
             clickedPage.value = 1;
         }
     };
@@ -292,35 +259,35 @@
 
     watch(page, async (newPage) => {
         window.scrollTo({ top: 500 });
-        if (selectedType.value !== "全部") {
+        if (selectedType.value !== '全部') {
             queryInfo.value.page = newPage;
             await queryProducts();
-            if (brand.value !== "全部") {
-                productsList.value = products.value.filter((item) => {
-                    return item.brand === brand.value;
-                });
+            if (brand.value !== '全部') {
+                productsList.value = products.value?.filter((item) => item.brand === brand.value) ?? [];
             } else {
-                productsList.value = products.value;
+                productsList.value = products.value ?? [];
             }
         } else {
             productsList.value = getPageData(page);
         }
     });
 
-    const getPageData = (page) => {
-        const startIndex = (page.value - 1) * 10;
-        const endIndex = startIndex + 10;
-        return productsStore.allProducts.slice(startIndex, endIndex);
+    const getPageData = (pageRef: Ref<number>) => {
+        const allProducts: Product[] = productsStore.allProducts ?? [];
+        const startIndex = (pageRef.value - 1) * PAGE_SIZE;
+        const endIndex = startIndex + PAGE_SIZE;
+        return allProducts.slice(startIndex, endIndex);
     };
 
     watch(selectedType, async (newSelectedType) => {
         page.value = 1;
         clickedPage.value = 1;
-        brand.value = "全部";
-        if (newSelectedType === "全部") {
-            products.value = productsStore.allProducts;
+        brand.value = '全部';
+        const allProducts: Product[] = productsStore.allProducts ?? [];
+        if (newSelectedType === '全部') {
+            products.value = allProducts;
             productsList.value = getPageData(page);
-            totalPages.value = Math.ceil(productsStore.allProducts.length / 10);
+            totalPages.value = Math.ceil(allProducts.length / PAGE_SIZE);
         } else {
             queryInfo.value.category = newSelectedType;
             queryInfo.value.page = 1;
@@ -328,8 +295,15 @@
         }
     });
 
-    const addProduct = async (id) => {
-        const info = {
+    const goToProduct = (item: Product) => {
+        router.push({
+            path: `/products/${item.id}`,
+            query: { type: item.category },
+        });
+    };
+
+    const addProduct = async (id: string) => {
+        const payload = {
             data: {
                 product_id: id,
                 qty: 1,
@@ -337,37 +311,38 @@
         };
         isLoading.value = true;
         try {
-            await addTocart(info);
+            await addTocart(payload);
             isLoading.value = false;
             cartStore.getCartNum();
             successMsg();
         } catch (error) {}
     };
 
-    const changePage = async (type, currentPage) => {
-        if (type === "firstPage") {
+    const changePage = async (pageAction: PageAction, currentPage?: number) => {
+        if (pageAction === 'firstPage') {
             page.value = 1;
-        } else if (type === "previousPage") {
+        } else if (pageAction === 'previousPage') {
             page.value === 1 ? null : (page.value -= 1);
-        } else if (type === "currentPage") {
-            page.value = currentPage;
-        } else if (type === "nextPage") {
+        } else if (pageAction === 'currentPage') {
+            page.value = currentPage ?? 1;
+        } else if (pageAction === 'nextPage') {
             page.value === totalPages.value ? null : (page.value += 1);
-        } else if (type === "lastPage") {
+        } else if (pageAction === 'lastPage') {
             page.value = totalPages.value;
         }
         clickedPage.value = page.value;
     };
 
-    router.beforeEach((to, from, next) => {
-        if (to.path === from.path && to.query.type !== from.query.type) {
-            selectedType.value = to.query.type;
-            queryInfo.value.category = selectedType.value;
-            next();
-        } else {
-            next();
+    watch(
+        () => route.query.type,
+        (newType) => {
+            if (route.path !== '/products') return;
+            const category = (Array.isArray(newType) ? newType[0] : newType) || '全部';
+            if (selectedType.value === category) return;
+            selectedType.value = category;
+            queryInfo.value.category = category;
         }
-    });
+    );
 
     onMounted(async () => {
         try {
@@ -375,7 +350,24 @@
             isLoading.value = false;
         } catch (error) {}
 
-        selectedType.value = route.query.type;
+        const queryType = route.query.type;
+        const category = (Array.isArray(queryType) ? queryType[0] : queryType) || '全部';
+
+        if (selectedType.value === category) {
+            // 初始值已是「全部」且網址也是「全部」時，watch 不會觸發，需手動載入
+            const allProducts: Product[] = productsStore.allProducts ?? [];
+            if (category === '全部') {
+                products.value = allProducts;
+                productsList.value = getPageData(page);
+                totalPages.value = Math.ceil(allProducts.length / PAGE_SIZE);
+            } else {
+                queryInfo.value.category = category;
+                queryInfo.value.page = 1;
+                await queryProducts();
+            }
+        } else {
+            selectedType.value = category;
+        }
         // queryInfo.value.category = selectedType.value
         // try {
         //     const res = await getProducts(queryInfo.value)
