@@ -25,7 +25,10 @@
                 <p class="mb-4 font-bold border-b-2">聯絡我們</p>
                 <ul>
                     <li class="mb-2">
-                        <a href="https://github.com/alyciaciou/liquor_store" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href="https://github.com/alyciaciou/liquor_store_nux3"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             <svg
                                 class="w-6 h-6 hover:scale-150 duration-300"
                                 fill="white"

@@ -33,6 +33,7 @@
 ## 🧩 技術架構與工具
 
 * Nuxt 3：基於 Vue 3，支援自動路由與靜態產生（SSG）
+* TypeScript：API 層、Pinia 與主要頁面
 * Tailwind CSS：快速打造一致的響應式 UI 設計
 * Pinia：狀態管理工具，集中管理購物車與商品資料
 * VeeValidate：表單驗證
