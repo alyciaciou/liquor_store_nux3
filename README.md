@@ -37,10 +37,21 @@
 * Tailwind CSS：快速打造一致的響應式 UI 設計
 * Pinia：狀態管理工具，集中管理購物車與商品資料
 * VeeValidate：表單驗證
-* Axios：串接第三方 API 實現即時資料互動
+* Axios：封裝 API 請求，攔截器統一錯誤處理並轉為中文提示
 * Vue Router：由 Nuxt 內建路由功能，自動建立 pages 對應路徑
-* SweetAlert2：美觀的彈跳視窗
+* SweetAlert2：彈跳視窗
 * Swiper：製作首頁圖片輪播
+
+---
+
+## 💡 技術亮點
+
+* **TypeScript**：API composable、Pinia store 與主要頁面皆有型別定義
+* **API 分層**：`base.ts` 統一請求與錯誤處理，各 API composable 定義回應型別
+* **錯誤提示**：axios 攔截器將 HTTP 狀態轉為中文訊息，頁面以 SweetAlert2 顯示
+* **完整電商流程**：商品列表 → 購物車 → 訂單 → 付款確認
+* **SSG 部署**：支援 GitHub Pages 與 Render 靜態部署
+
 ---
 
 ## ⚙️ 安裝與開發
